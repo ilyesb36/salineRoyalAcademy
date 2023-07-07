@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .competition_card {
   display: flex;
   flex-direction: column;
@@ -22,6 +24,7 @@
   > div:last-of-type {
     display: flex;
     justify-content: space-between;
+    align-items: end;
 
     ul {
       display: flex;
@@ -39,6 +42,13 @@
           width: 16px;
         }
       }
+    }
+
+    .countdown {
+      border: 1px solid $secondary-gray-light;
+      height: fit-content;
+      padding: 10px 30px;
+      border-radius: 40px;
     }
   }
 }

@@ -79,8 +79,8 @@
   }
 
   .scrollable {
-    overflow: scroll;
-    width: 1000px;
+    overflow-x: scroll;
+    max-width: 100%;
 
     .articles_container {
       display: flex;

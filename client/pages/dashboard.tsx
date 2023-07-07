@@ -1,3 +1,4 @@
+import React, { useEffect, useRef, useState } from 'react';
 import Header from '@/components/common/Header';
 import style from '../styles/pages/dashboard.module.scss';
 import CardContainerStyle from '../styles/components/CardContainer.module.scss';
@@ -12,6 +13,21 @@ import CompetitionCard from '@/components/CompetitionCard';
 import ArticleCard from '@/components/ArticleCard';
 
 export default function Dashboard() {
+  const [widthContainerArticles, setWidthContainerArticles] =
+    useState<number>();
+
+  const handleResize = () => {
+    setWidthContainerArticles(window.innerWidth - 340);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className={style.dashboard}>
       <Header name="Dashboard" />
@@ -111,7 +127,7 @@ export default function Dashboard() {
                 instrument="piano"
                 title="The Queen Sonja International Music Competition"
                 place="Oslo, Norway"
-                date={new Date('2023-07-02T13:12:00.838Z')}
+                date={new Date('2023-07-07T13:14:00.838Z')}
                 award={50000}
               />
             </Card>
@@ -122,8 +138,17 @@ export default function Dashboard() {
           textLink="See all articles"
           hrefLink=""
         >
-          <div className={style.scrollable}>
+          <div
+            className={style.scrollable}
+            style={{ width: widthContainerArticles }}
+          >
             <div className={style.articles_container}>
+              <ArticleCard
+                instrument="piano"
+                title="Where to listen classical music at Paris"
+                author="parisoperafan"
+                date={new Date('Thu Jul 06 2023 19:41:21 GMT+0200')}
+              />
               <ArticleCard
                 instrument="piano"
                 title="Where to listen classical music at Paris"
