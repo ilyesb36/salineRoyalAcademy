@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { Client } from 'pg'
 import userRoutes from './routes/userRoutes';
+import masterclassesRoutes from './routes/masterclassesRoutes';
 import schoolRoutes from './routes/schoolRoutes';
 import pool from './db/database';
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/users', userRoutes);
+app.use('/api/masterclasses', masterclassesRoutes);
 app.use('/api/schools', schoolRoutes);
 
 // Serve the frontend
